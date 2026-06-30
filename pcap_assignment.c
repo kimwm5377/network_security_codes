@@ -149,8 +149,9 @@ int main(void) {
     bpf_u_int32 net = 0;
     bpf_u_int32 mask = 0;
 
-    // TCP only. UDP packets are ignored by this filter.
-    char filter_exp[] = "tcp";
+
+    // IPv4 TCP packets only. UDP and IPv6 packets are ignored by this filter.
+    char filter_exp[] = "tcp and ip";
 
     if (pcap_lookupnet(DEVICE, &net, &mask, errbuf) == -1) {
         net = 0;

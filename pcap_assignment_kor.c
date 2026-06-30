@@ -150,7 +150,8 @@ int main(void) {
     bpf_u_int32 net = 0;
     bpf_u_int32 mask = 0;
 
-    char filter_exp[] = "tcp";
+    // IPv4 기반 TCP 패킷만 캡처
+    char filter_exp[] = "tcp and ip";
 
     if (pcap_lookupnet(DEVICE, &net, &mask, errbuf) == -1) {
         net = 0;
