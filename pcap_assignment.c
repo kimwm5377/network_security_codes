@@ -33,11 +33,11 @@ void print_payload_as_text(const u_char *payload, int payload_len) {
 }
 
 void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {
-    (void)args;
+        (void)args;  // Unused parameter
 
-    tarts at the beginning of the packet.
+    // 1. Ethernet header starts at the beginning of the packet.
     if (header->caplen < ETHERNET_LEN) {
-i
+        return;
     }
 
     struct ethheader *eth = (struct ethheader *)packet;
